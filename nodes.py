@@ -10,8 +10,8 @@ from typing import List, Tuple, Optional, Set
 
 import numpy as np
 
-import common as cm
-from conflict import Conflict, Constraint, ConstraintType
+import EECBSpy.common as cm
+from EECBSpy.conflict import Conflict, Constraint, ConstraintType
 
 
 class NodeSelection(Enum):

@@ -11,14 +11,14 @@ from multipledispatch import dispatch
 import random
 import matplotlib.pyplot as plt
 
-import common as cm
+import EECBSpy.common as cm
 
 
 class Instance(object):
     RANDOM_WALK_STEPS = 100000
 
     def __init__(self, map_fname, agent_fname, num_of_agents=0,
-                 num_of_rows=0, num_of_cols=0, num_of_obstacles=0, warehouse_width=0):
+                 num_of_rows=0, num_of_cols=0, num_of_obstacles=0, warehouse_width=0, save=False):
         self.map_fname = map_fname
         self.agent_fname = agent_fname
         self.num_of_agents = num_of_agents
@@ -37,17 +37,19 @@ class Instance(object):
             if (self.num_of_rows > 0 and self.num_of_cols > 0
                     and 0 < self.num_of_obstacles < self.num_of_rows * self.num_of_cols):
                 self._generate_connected_random_grid(self.num_of_rows, self.num_of_cols, self.num_of_obstacles)
-                self.save_map()
+                if save:
+                    self.save_map()
             else:
                 raise RuntimeError(f"Map file {self.map_fname} not found.")
 
-        succ = self.load_agents()
-        if not succ:
-            if self.num_of_agents > 0:
-                self._generate_random_agents(self.warehouse_width)
-                self.save_agents()
-            else:
-                raise RuntimeError(f"Agent file {self.agent_fname} not found.")
+        # succ = self.load_agents()
+        # if not succ:
+        #     if self.num_of_agents > 0:
+        #         self._generate_random_agents(self.warehouse_width)
+        #         if save:
+        #             self.save_agents()
+        #     else:
+        #         raise RuntimeError(f"Agent file {self.agent_fname} not found.")
 
     def draw_map(self, fname):
         # 将字符串转化为二维数组
@@ -76,6 +78,38 @@ class Instance(object):
         # 显示图像
         fig.savefig(fname)
         plt.close()
+
+    def plot_map(self, paths=None, t_paths=None):
+        grid = self.my_map.reshape(self.rows, self.cols).astype(int)
+        print(self.start_locations)
+        print(self.num_of_agents)
+        starts = []
+        for loc in self.start_locations:
+            r = self.get_row_coordinate(loc)
+            c = self.get_col_coordinate(loc)
+            starts.append([r,c])
+        starts = np.asarray(starts)
+        goals = []
+        for loc in self.goal_locations:
+            r = self.get_row_coordinate(loc)
+            c = self.get_col_coordinate(loc)
+            goals.append([r,c])
+        goals = np.asarray(goals)
+        fig, ax = plt.subplots(1, 1)
+
+        ax.scatter(starts[:,1],starts[:,0])
+        ax.scatter(goals[:,1],goals[:,0])
+        if paths is not None:
+            for path in paths:
+                ax.plot(path[:,0], path[:,1],linewidth=1)
+
+        if t_paths is not None:
+            for t_path in t_paths:
+                ax.plot(t_path[:,0], t_path[:,1],linewidth=1, c='r')
+        extent = [0,grid.shape[0],0,grid.shape[1]]
+        ax.imshow(grid, extent=extent, origin='lower')
+        ax.set_aspect('equal')
+        plt.show()
 
     @property
     def cols(self):
@@ -195,7 +229,7 @@ class Instance(object):
         try:
             with open(self.agent_fname, 'r') as myfile:
                 line = myfile.readline().strip()
-
+                print(f"line {line}")
                 if line[0] == 'v':  # Nathan's benchmark
                     if self.num_of_agents == 0:
                         raise ValueError("The number of agents should be larger than 0")
@@ -212,13 +246,16 @@ class Instance(object):
                         goal_row = int(line[7])
                         self.goal_locations[i] = self.linearize_coordinate(goal_row, goal_col)
                 else:  # My benchmark
+                    print(f"line {line}")
                     line = line.split(',')
+                    print(f"line {line}")
                     self.num_of_agents = int(line[0])
                     self.start_locations = np.zeros(self.num_of_agents, dtype=int)
                     self.goal_locations = np.zeros(self.num_of_agents, dtype=int)
 
                     for i in range(self.num_of_agents):
                         line = myfile.readline().strip().split(',')
+                        print(f"line {line}")
                         start_row = int(line[0])
                         start_col = int(line[1])
                         self.start_locations[i] = self.linearize_coordinate(start_row, start_col)

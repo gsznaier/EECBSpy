@@ -11,12 +11,12 @@ from typing import List, Tuple, Union
 
 import numpy as np
 
-import common as cm
-from cbs import CBS, HighLevelSolverType
-from conflict import ConstraintType, ConflictType, Conflict, ConflictPriority
-from constraint_table import ConstraintTable
-from instance import Instance
-from nodes import ECBSNode
+import EECBSpy.common as cm
+from EECBSpy.cbs import CBS, HighLevelSolverType
+from EECBSpy.conflict import ConstraintType, ConflictType, Conflict, ConflictPriority
+from EECBSpy.constraint_table import ConstraintTable
+from EECBSpy.instance import Instance
+from EECBSpy.nodes import ECBSNode
 
 
 class ECBS(CBS):

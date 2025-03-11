@@ -11,7 +11,7 @@ from dataclasses import dataclass
 from enum import Enum
 from copy import deepcopy
 
-import common as cm
+import EECBSpy.common as cm
 
 
 class ConflictType(Enum):

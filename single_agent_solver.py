@@ -8,10 +8,10 @@ import numpy as np
 from typing import List, Tuple, Dict
 import heapq as hpq
 
-from instance import Instance
-from nodes import LLNode, HLNode
-import common as cm
-from constraint_table import ConstraintTable
+from EECBSpy.instance import Instance
+from EECBSpy.nodes import LLNode, HLNode
+import EECBSpy.common as cm
+from EECBSpy.constraint_table import ConstraintTable
 
 
 class SingleAgentSolver:

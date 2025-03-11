@@ -7,11 +7,11 @@ import time
 from copy import deepcopy
 from typing import List, Tuple, Optional
 
-import common as cm
-from conflict import Conflict, Constraint, ConstraintType
-from constraint_table import ConstraintTable
-from nodes import HLNode
-from single_agent_solver import SingleAgentSolver
+import EECBSpy.common as cm
+from EECBSpy.conflict import Conflict, Constraint, ConstraintType
+from EECBSpy.constraint_table import ConstraintTable
+from EECBSpy.nodes import HLNode
+from EECBSpy.single_agent_solver import SingleAgentSolver
 
 
 class CorridorReasoning:

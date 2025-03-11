@@ -9,10 +9,10 @@ from typing import List, Tuple, Union
 import numpy as np
 from multipledispatch import dispatch
 
-import common as cm
-from conflict import Conflict, Constraint, ConstraintType, ConflictPriority
-from instance import Instance
-from mdd import MDD
+import EECBSpy.common as cm
+from EECBSpy.conflict import Conflict, Constraint, ConstraintType, ConflictPriority
+from EECBSpy.instance import Instance
+from EECBSpy.mdd import MDD
 
 
 class RectangleReasoning:

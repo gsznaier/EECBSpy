@@ -11,11 +11,10 @@ from typing import List, Dict, Optional, Set
 from multipledispatch import dispatch
 from copy import deepcopy
 
-import common as cm
-from constraint_table import ConstraintTable
-from nodes import MDDNode, SyncMDDNode, ConstraintsHasher, HLNode
-from single_agent_solver import SingleAgentSolver
-
+import EECBSpy.common as cm
+from EECBSpy.constraint_table import ConstraintTable
+from EECBSpy.nodes import MDDNode, SyncMDDNode, ConstraintsHasher, HLNode
+from EECBSpy.single_agent_solver import SingleAgentSolver
 
 class MDD:
     def __init__(self):

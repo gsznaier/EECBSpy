@@ -7,12 +7,12 @@ import time
 from copy import deepcopy
 from typing import Tuple, List, Dict
 
-import common as cm
-from constraint_table import ConstraintTable
-from instance import Instance
-from nodes import SIPPNode, HLNode
-from reservation_table import ReservationTable
-from single_agent_solver import SingleAgentSolver
+import EECBSpy.common as cm
+from EECBSpy.constraint_table import ConstraintTable
+from EECBSpy.instance import Instance
+from EECBSpy.nodes import SIPPNode, HLNode
+from EECBSpy.reservation_table import ReservationTable
+from EECBSpy.single_agent_solver import SingleAgentSolver
 
 
 class SIPP(SingleAgentSolver):

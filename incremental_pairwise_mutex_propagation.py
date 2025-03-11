@@ -7,11 +7,11 @@
 import numpy as np
 from typing import List, Dict, Tuple, Union
 
-from mdd import MDD
-from single_agent_solver import SingleAgentSolver
-from constraint_table import ConstraintTable
-from conflict import Constraint
-from constraint_propagation import ConstraintPropagation
+from EECBSpy.mdd import MDD
+from EECBSpy.single_agent_solver import SingleAgentSolver
+from EECBSpy.constraint_table import ConstraintTable
+from EECBSpy.conflict import Constraint
+from EECBSpy.constraint_propagation import ConstraintPropagation
 
 
 class IPMutexPropagation:

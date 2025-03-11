@@ -10,9 +10,9 @@ from typing import List, Tuple, Dict, Optional, Set
 from collections import deque
 from multipledispatch import dispatch
 
-from mdd import MDD, collect_mdd_level
-from nodes import MDDNode
-from conflict import Constraint, ConstraintType
+from EECBSpy.mdd import MDD, collect_mdd_level
+from EECBSpy.nodes import MDDNode
+from EECBSpy.conflict import Constraint, ConstraintType
 
 NodePair = Tuple[Optional[MDDNode], Optional[MDDNode]]
 EdgePair = Tuple[NodePair, NodePair]

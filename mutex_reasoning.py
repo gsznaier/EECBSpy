@@ -8,14 +8,14 @@ import numpy as np
 from typing import List, Tuple, Dict, Optional
 from copy import deepcopy
 
-from mdd import MDD
-from nodes import MDDNode, ConstraintsHasher, CBSNode
-from instance import Instance
-from incremental_pairwise_mutex_propagation import IPMutexPropagation
-from constraint_table import ConstraintTable
-from conflict import Conflict, Constraint
-from single_agent_solver import SingleAgentSolver
-from constraint_propagation import ConstraintPropagation
+from EECBSpy.mdd import MDD
+from EECBSpy.nodes import MDDNode, ConstraintsHasher, CBSNode
+from EECBSpy.instance import Instance
+from EECBSpy.incremental_pairwise_mutex_propagation import IPMutexPropagation
+from EECBSpy.constraint_table import ConstraintTable
+from EECBSpy.conflict import Conflict, Constraint
+from EECBSpy.single_agent_solver import SingleAgentSolver
+from EECBSpy.constraint_propagation import ConstraintPropagation
 
 
 class MutexReasoning:

@@ -6,8 +6,8 @@
 
 from typing import List, Tuple
 
-import common as cm
-from constraint_table import ConstraintTable
+import EECBSpy.common as cm
+from EECBSpy.constraint_table import ConstraintTable
 
 Interval = Tuple[int, int, bool]  # [t_min, t_max), num_of_collisions
 Sit = List[List[Interval]]  # location -> [t_min, t_max), num_of_collisions

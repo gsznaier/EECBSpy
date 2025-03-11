@@ -13,15 +13,15 @@ from multipledispatch import dispatch
 import numpy as np
 import numba
 
-from rectangle_reasoning import RectangleReasoning
-from corridor_reasoning import CorridorReasoning
-from mdd import MDD
-from single_agent_solver import SingleAgentSolver
-import common as cm
-from nodes import HLNode, NodeSelection, CBSNode, ECBSNode, SyncMDDNode
-from conflict import ConstraintType, ConflictSelection, ConflictPriority, ConflictType, Constraint
-from constraint_table import ConstraintTable
-from mdd import MDDTable, SyncMDD
+from EECBSpy.rectangle_reasoning import RectangleReasoning
+from EECBSpy.corridor_reasoning import CorridorReasoning
+from EECBSpy.mdd import MDD
+from EECBSpy.single_agent_solver import SingleAgentSolver
+import EECBSpy.common as cm
+from EECBSpy.nodes import HLNode, NodeSelection, CBSNode, ECBSNode, SyncMDDNode
+from EECBSpy.conflict import ConstraintType, ConflictSelection, ConflictPriority, ConflictType, Constraint
+from EECBSpy.constraint_table import ConstraintTable
+from EECBSpy.mdd import MDDTable, SyncMDD
 
 
 class HeuristicType(Enum):

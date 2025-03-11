@@ -10,12 +10,12 @@ import time
 import random
 import numpy as np
 
-from instance import Instance
-from ecbs import ECBS
-from conflict import ConflictSelection
-from nodes import NodeSelection
-from cbs import HighLevelSolverType
-from cbs_heuristic import HeuristicType
+from EECBSpy.instance import Instance
+from EECBSpy.ecbs import ECBS
+from EECBSpy.conflict import ConflictSelection
+from EECBSpy.nodes import NodeSelection
+from EECBSpy.cbs import HighLevelSolverType
+from EECBSpy.cbs_heuristic import HeuristicType
 
 
 def main():

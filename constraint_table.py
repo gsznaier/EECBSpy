@@ -9,9 +9,9 @@ from typing import List, Dict, Tuple, Union
 import numpy as np
 from multipledispatch import dispatch
 
-import common as cm
-from conflict import Constraint, ConstraintType
-from nodes import CBSNode, HLNode
+import EECBSpy.common as cm
+from EECBSpy.conflict import Constraint, ConstraintType
+from EECBSpy.nodes import CBSNode, HLNode
 
 
 class ConstraintTable:

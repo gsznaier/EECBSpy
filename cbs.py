@@ -14,19 +14,19 @@ from typing import List, Tuple, Union, Dict
 
 from multipledispatch import dispatch
 
-from cbs_heuristic import CSBHeuristic, HeuristicType
-from nodes import CBSNode, HLNode, NodeSelection, ECBSNode
-from corridor_reasoning import CorridorReasoning
-from mutex_reasoning import MutexReasoning
-from rectangle_reasoning import RectangleReasoning
-from instance import Instance
-from single_agent_solver import SingleAgentSolver
-from constraint_table import ConstraintTable
-import common as cm
-from mdd import MDDTable
-from space_time_astar import SpaceTimeAstar
-from conflict import Conflict, ConflictSelection, ConstraintType, Constraint, ConflictType
-from sipp import SIPP
+from EECBSpy.cbs_heuristic import CSBHeuristic, HeuristicType
+from EECBSpy.nodes import CBSNode, HLNode, NodeSelection, ECBSNode
+from EECBSpy.corridor_reasoning import CorridorReasoning
+from EECBSpy.mutex_reasoning import MutexReasoning
+from EECBSpy.rectangle_reasoning import RectangleReasoning
+from EECBSpy.instance import Instance
+from EECBSpy.single_agent_solver import SingleAgentSolver
+from EECBSpy.constraint_table import ConstraintTable
+import EECBSpy.common as cm
+from EECBSpy.mdd import MDDTable
+from EECBSpy.space_time_astar import SpaceTimeAstar
+from EECBSpy.conflict import Conflict, ConflictSelection, ConstraintType, Constraint, ConflictType
+from EECBSpy.sipp import SIPP
 
 
 class HighLevelSolverType(Enum):
