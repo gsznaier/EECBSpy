@@ -10,6 +10,7 @@ from typing import List, Dict, Tuple, Union
 from multipledispatch import dispatch
 import random
 import matplotlib.pyplot as plt
+from matplotlib import colors
 
 import EECBSpy.common as cm
 
@@ -34,8 +35,11 @@ class Instance(object):
 
         succ = self.load_map()
         if not succ:
+            print("ENTERED HERE")
+            print(self.num_of_rows)
+            print(self.num_of_cols)
             if (self.num_of_rows > 0 and self.num_of_cols > 0
-                    and 0 < self.num_of_obstacles < self.num_of_rows * self.num_of_cols):
+                    and 0 <= self.num_of_obstacles < self.num_of_rows * self.num_of_cols):
                 self._generate_connected_random_grid(self.num_of_rows, self.num_of_cols, self.num_of_obstacles)
                 if save:
                     self.save_map()
@@ -81,34 +85,43 @@ class Instance(object):
 
     def plot_map(self, paths=None, t_paths=None):
         grid = self.my_map.reshape(self.rows, self.cols).astype(int)
+        width, height = grid.shape
         print(self.start_locations)
         print(self.num_of_agents)
         starts = []
         for loc in self.start_locations:
             r = self.get_row_coordinate(loc)
             c = self.get_col_coordinate(loc)
+            print(f"is start an obstacle?: {self.is_obstacle(loc)}")
             starts.append([r,c])
         starts = np.asarray(starts)
+        print(f"starts: {starts}")
         goals = []
         for loc in self.goal_locations:
             r = self.get_row_coordinate(loc)
             c = self.get_col_coordinate(loc)
             goals.append([r,c])
+            print(f"is goal an obstacle?: {self.is_obstacle(loc)}")
         goals = np.asarray(goals)
+        print(f"starts: {goals}")
         fig, ax = plt.subplots(1, 1)
 
-        ax.scatter(starts[:,1],starts[:,0])
-        ax.scatter(goals[:,1],goals[:,0])
+        ax.scatter(starts[:,1]+0.5,starts[:,0]+0.5)
+        ax.scatter(goals[:,1]+0.5,goals[:,0]+0.5)
         if paths is not None:
             for path in paths:
-                ax.plot(path[:,0], path[:,1],linewidth=1)
+                ax.plot(path[:,1]+0.5, path[:,0]+0.5,linewidth=1)
 
         if t_paths is not None:
             for t_path in t_paths:
-                ax.plot(t_path[:,0], t_path[:,1],linewidth=1, c='r')
-        extent = [0,grid.shape[0],0,grid.shape[1]]
-        ax.imshow(grid, extent=extent, origin='lower')
+                ax.plot(t_path[:,1]+0.5, t_path[:,0]+0.5,linewidth=1, c='r')
+        cmap = colors.ListedColormap(['white', 'black'])
+        bounds = [0, 0.5, 1]
+        norm = colors.BoundaryNorm(bounds, cmap.N)
+        ax.imshow(grid, cmap=cmap, norm=norm, interpolation='none',
+            extent=[0, width, height, 0])
         ax.set_aspect('equal')
+        plt.savefig("/home/gsznaier/Desktop/CBS3D/experiments/2D_experiments/test_new.png")
         plt.show()
 
     @property

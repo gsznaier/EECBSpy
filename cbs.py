@@ -492,7 +492,8 @@ class CBS:
                 print("solution invalid")
                 self.print_results()
                 self._print_paths()
-                sys.exit(-1)
+                # sys.exit(-1)
+                return False
             if self.screen > 0:
                 self.print_results()
             return True
